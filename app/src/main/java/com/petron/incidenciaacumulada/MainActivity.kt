@@ -21,13 +21,9 @@ class MainActivity : AppCompatActivity() {
     fun incidenciaAcumulada2() {
         val numeroContagios = Integer.parseInt (editTextNumberContagios.getText().toString()).toDouble()
         val poblacion = Integer.parseInt(editTextNumberPoblacion.getText().toString())
-        var calcular : Double = (numeroContagios / poblacion) * 100000
-        var calcularformat = (String.format("%.2f",calcular))
+        val calcular : Double = (numeroContagios / poblacion) * 100000
+        val calcularformat = (String.format("%.2f",calcular))
         textViewResultados.setText(calcularformat)
-
-        fun envioDatos(): String {
-            return calcularformat
-        }
 
 
 
@@ -47,11 +43,11 @@ class MainActivity : AppCompatActivity() {
             // Llamada a compartir haber como exporto la variable que quiero enviar
             R.id.compartir -> {
                 // Sacamos el dato de incidencia de textView
-                var envio = textViewResultados.getText()
+                val envio = textViewResultados.getText()
 
                 val sendIntent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    // Mandomos un texto y dentro la varible con la incidencia acumulada
+                    // Mandamos un texto y dentro la varible con la incidencia acumulada
                     putExtra(Intent.EXTRA_TEXT, "Incidencia acumulada $envio" )
                     type = "text/plain"
                 }
