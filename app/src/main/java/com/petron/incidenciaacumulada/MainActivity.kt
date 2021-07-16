@@ -46,12 +46,13 @@ class MainActivity : AppCompatActivity() {
 
             // Llamada a compartir haber como exporto la variable que quiero enviar
             R.id.compartir -> {
-
-                //var envio : String = envioDatos()
+                // Sacamos el dato de incidencia de textView
+                var envio = textViewResultados.getText()
 
                 val sendIntent = Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "La incidenda acumulada es" )
+                    // Mandomos un texto y dentro la varible con la incidencia acumulada
+                    putExtra(Intent.EXTRA_TEXT, "Incidencia acumulada $envio" )
                     type = "text/plain"
                 }
                 val shareIntent = Intent.createChooser(sendIntent, null)
